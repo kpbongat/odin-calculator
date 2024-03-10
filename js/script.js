@@ -36,3 +36,5 @@ let operandTwo;
 let operator;
 let output;
 
+const buttonGroup = document.querySelectorAll('.operator-group button, .number-group button')
+buttonGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)))
