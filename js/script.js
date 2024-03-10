@@ -28,7 +28,7 @@ function operate(operator,num1,num2){
 }
 
 function displayOutput(output){
-    document.querySelector('.display').textContent = output;
+    document.querySelector('.display').textContent += output;
 }
 
 let operandOne;
