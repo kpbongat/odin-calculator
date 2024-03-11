@@ -31,6 +31,10 @@ function displayOutput(output){
     document.querySelector('.display').textContent += output;
 }
 
+function clearOutput(){
+    document.querySelector('.display').textContent = '';
+}
+
 let operandOne;
 let operandTwo;
 let operator;
