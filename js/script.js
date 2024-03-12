@@ -49,3 +49,6 @@ numberGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textCon
 
 const operatorGroup = document.querySelectorAll('.operator-group button');
 operatorGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)));
+
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', clearOutput);
