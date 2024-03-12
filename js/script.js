@@ -40,5 +40,8 @@ let operandTwo;
 let operator;
 let output;
 
-const buttonGroup = document.querySelectorAll('.operator-group button, .number-group button')
-buttonGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)))
+const numberGroup = document.querySelectorAll('.number-group button');
+numberGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)));
+
+const operatorGroup = document.querySelectorAll('.operator-group button');
+operatorGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)));
