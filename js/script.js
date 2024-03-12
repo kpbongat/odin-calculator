@@ -31,6 +31,10 @@ function displayOutput(output){
     document.querySelector('.display').textContent += output;
 }
 
+function getOutput(){
+    return document.querySelector('.display').textContent;
+}
+
 function clearOutput(){
     document.querySelector('.display').textContent = '';
 }
