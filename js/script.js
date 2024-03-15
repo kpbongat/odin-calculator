@@ -51,11 +51,18 @@ let operator;
 let output;
 
 const numberGroup = document.querySelectorAll('.number-group button');
-numberGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)));
+numberGroup.forEach(i=>i.addEventListener('click', () => {
+    if (getOutput() === '0'){
+        clearOutput();
+    }
+    displayOutput(i.textContent)}));
 
 const operatorGroup = document.querySelectorAll('.operator-group button,.equal');
 operatorGroup.forEach(i=>i.addEventListener('click', () => {
     output = getOutput();
+    if (getOutput() === '0'){
+        clearOutput();
+    }
     operator = output.split('')
                      .filter(i=>isNaN(+i))
                      .pop();
@@ -82,4 +89,10 @@ operatorGroup.forEach(i=>i.addEventListener('click', () => {
 }));
 
 const clearButton = document.querySelector('.clear');
-clearButton.addEventListener('click', clearOutput);
+clearButton.addEventListener('click', () => {
+    clearOutput();
+    displayOutput('0');
+    operandOne = undefined;
+    operandTwo = undefined;
+    operator = undefined;
+});
