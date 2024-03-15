@@ -47,8 +47,36 @@ let output;
 const numberGroup = document.querySelectorAll('.number-group button');
 numberGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)));
 
-const operatorGroup = document.querySelectorAll('.operator-group button');
-operatorGroup.forEach(i=>i.addEventListener('click', () => displayOutput(i.textContent)));
+const operatorGroup = document.querySelectorAll('.operator-group button,.equal');
+operatorGroup.forEach(i=>i.addEventListener('click', () => {
+    output = getOutput();
+    operator = output.split('')
+                     .filter(i=>isNaN(+i))
+                     .pop();
+                    
+    if (!operandOne){
+        operandOne = output.split(operator)
+                           .map(i=> (!i) ? '0' : i)[0];
+    }
+    operandTwo = output.replace(operandOne,'')
+                       .split(operator)
+                       .map(i=> (!i) ? '0' : i)[1];
+        
+    if(operandOne && operandTwo) {
+        operandOne = operate(operator,+operandOne,+operandTwo);
+        operandTwo = undefined;
+        clearOutput();
+        displayOutput(operandOne);
+    }
+    if (i.textContent !== '='){
+        displayOutput(i.textContent);
+    }
+
+     
+    
+    
+
+}));
 
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', clearOutput);
