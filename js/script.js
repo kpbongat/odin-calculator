@@ -15,16 +15,22 @@ function divide(num1,num2){
 }
 
 function operate(operator,num1,num2){
+    let result;
     switch(operator){
         case '+':
-            return add(num1,num2);
+            result = add(num1,num2);
+            break;
         case '-':
-            return subtract(num1,num2);
+            result = subtract(num1,num2);
+            break;
         case '*':
-            return multiply(num1,num2);
+            result = multiply(num1,num2);
+            break;
         case '/':
-            return divide(num1,num2);
+            result = divide(num1,num2);
+            break;
     }
+    return Math.round(result);
 }
 
 function displayOutput(output){
@@ -71,9 +77,6 @@ operatorGroup.forEach(i=>i.addEventListener('click', () => {
     if (i.textContent !== '='){
         displayOutput(i.textContent);
     }
-
-     
-    
     
 
 }));
