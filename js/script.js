@@ -60,7 +60,7 @@ numberGroup.forEach(i=>i.addEventListener('click', () => {
 const operatorGroup = document.querySelectorAll('.operator-group button,.equal');
 operatorGroup.forEach(i=>i.addEventListener('click', () => {
     output = getOutput();
-    if (getOutput() === '0'){
+    if (getOutput() === '0' && i.textContent != '='){
         clearOutput();
     }
     operator = output.split('')
