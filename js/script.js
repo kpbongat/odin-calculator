@@ -28,6 +28,9 @@ function operate(operator,num1,num2){
             break;
         case '/':
             result = divide(num1,num2);
+            if (!isFinite(result)){
+                return 'Error: Division by zero!';
+            }
             break;
     }
     return Math.round(result);
@@ -52,7 +55,7 @@ let output;
 
 const numberGroup = document.querySelectorAll('.number-group button');
 numberGroup.forEach(i=>i.addEventListener('click', () => {
-    if (getOutput() === '0'){
+    if (getOutput() === '0' || getOutput().includes('Error')){
         clearOutput();
     }
     displayOutput(i.textContent)}));
@@ -60,9 +63,10 @@ numberGroup.forEach(i=>i.addEventListener('click', () => {
 const operatorGroup = document.querySelectorAll('.operator-group button,.equal');
 operatorGroup.forEach(i=>i.addEventListener('click', () => {
     output = getOutput();
-    if (getOutput() === '0' && i.textContent != '='){
+    if ((getOutput() === '0' && i.textContent === '-') || getOutput().includes('Error')){
         clearOutput();
     }
+
     operator = output.split('')
                      .filter(i=>isNaN(+i))
                      .pop();
