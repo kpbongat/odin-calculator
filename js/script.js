@@ -62,11 +62,10 @@ numberGroup.forEach(i=>i.addEventListener('click', () => {
 
 const operatorGroup = document.querySelectorAll('.operator-group button,.equal');
 operatorGroup.forEach(i=>i.addEventListener('click', () => {
-    output = getOutput();
     if ((getOutput() === '0' && i.textContent === '-') || getOutput().includes('Error')){
         clearOutput();
     }
-
+    output = getOutput();
     operator = output.split('')
                      .filter(i=>isNaN(+i))
                      .pop();
@@ -84,6 +83,9 @@ operatorGroup.forEach(i=>i.addEventListener('click', () => {
         operandTwo = undefined;
         clearOutput();
         displayOutput(operandOne);
+        if (getOutput().includes('Error')){
+            operandOne = undefined;
+        }
     }
     if (i.textContent !== '='){
         displayOutput(i.textContent);
